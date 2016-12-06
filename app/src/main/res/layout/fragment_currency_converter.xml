@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.sergey.testtask.mvvm.utils.TextPatterns" />
+
+        <variable
+            name="model"
+            type="com.example.sergey.testtask.mvvm.model.CurrencyConverterModel" />
+
+        <variable
+            name="viewModel"
+            type="com.example.sergey.testtask.mvvm.viewmodel.CurrencyConverterViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/begin_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/begin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/source_currency"
+                android:textColor="@android:color/holo_green_dark"
+                app:fontName='@{"OpenSans-Light.ttf"}' />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/begin"
+                android:layout_marginTop="5dp"
+                android:background="#f5f5f5"
+                android:padding="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/begin_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="5dp"
+                    android:layout_toLeftOf="@+id/first_country_edit"
+                    android:layout_toStartOf="@+id/first_country_edit"
+                    android:onClick="@{viewModel.startCountryClick}">
+
+                    <ImageView
+                        android:id="@+id/first_country_image"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:imageResources="@{model.beginDrawableRes}"
+                        tools:src="@drawable/usd" />
+
+                    <TextView
+                        android:id="@+id/first_country_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginStart="19dp"
+                        android:layout_toEndOf="@+id/first_country_image"
+                        android:layout_toRightOf="@+id/first_country_image"
+                        android:text="@{model.beginCountry}"
+                        android:textColor="#6e6e6e"
+                        app:fontName='@{"OpenSans-Regular.ttf"}'
+                        tools:text="start_country" />
+                </RelativeLayout>
+
+                <EditText
+                    android:id="@+id/first_country_edit"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/begin_field"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginEnd="15dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/edit_txt_bg"
+                    android:clickable="true"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="@={model.inputCount}"
+                    android:textAlignment="center"
+                    app:fontName='@{"OpenSans-Semibold.ttf"}'
+                    tools:text="1" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/begin_layout">
+
+            <TextView
+                android:id="@+id/end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5sp"
+                android:text="@string/end_currency"
+                android:textColor="@android:color/holo_green_dark"
+                app:fontName='@{"OpenSans-Light.ttf"}' />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/end"
+                android:layout_marginTop="5sp"
+                android:background="#f5f5f5"
+                android:padding="10sp">
+
+                <RelativeLayout
+                    android:id="@+id/end_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="@{viewModel.endCountryClick}">
+
+                    <ImageView
+                        android:id="@+id/second_country_flag"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_centerVertical="true"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitCenter"
+                        app:imageResources="@{model.endDrawableRes}"
+                        tools:src="@drawable/gbp" />
+
+                    <TextView
+                        android:id="@+id/second_country_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/second_country_flag"
+                        android:layout_toRightOf="@+id/second_country_flag"
+                        android:text="@{model.endCountry}"
+                        android:textColor="#6e6e6e"
+                        app:fontName='@{"OpenSans-Regular.ttf"}'
+                        tools:text="end_country" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:background="#f5f5f5">
+
+            <TextView
+                android:id="@+id/text_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@{TextPatterns.formatDoubleToString(model.resultConvert)}"
+                android:textColor="@android:color/holo_green_dark"
+                android:textSize="40sp"
+                app:fontName='@{"OpenSans-Semibold.ttf"}'
+                tools:text="0" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/button_convert"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relativeLayout2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/holo_green_dark"
+            android:onClick="@{viewModel.convertButtonClick}"
+            android:text="@string/convert"
+            android:textColor="@android:color/white"
+            app:fontName='@{"OpenSans-Light.ttf"}' />
+    </RelativeLayout>
+</layout>

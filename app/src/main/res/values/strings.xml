@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TestTask</string>
+    <string name="main_title">Currency Converter</string>
+    <string name="second_title">Выбор страны</string>
+    <string name="source_currency">Исходная валюта</string>
+    <string name="convert">Конвертировать</string>
+    <string name="end_currency">Конечная валюта</string>
+    <string name="internet_connection_title">Ошибка соединения</string>
+    <string name="internet_connection_message">Пожалуйста, проверьте соединение с Интернет</string>
+    <string name="toast_message">Заполните все поля</string>
+</resources>

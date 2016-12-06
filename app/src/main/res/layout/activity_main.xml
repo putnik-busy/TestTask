@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.example.sergey.testtask.mvvm.utils.ResourceUtils" />
+
+        <variable
+            name="model"
+            type="com.example.sergey.testtask.mvvm.model.HomeScreenModel" />
+
+        <variable
+            name="viewModel"
+            type="com.example.sergey.testtask.mvvm.viewmodel.HomeActivityViewModel" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_green_dark"
+            android:minHeight="@dimen/abc_action_bar_default_height_material"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:actionbar="@{true}"
+            app:homeButton="@{model.visibleHomeButton}">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{model.titleToolbar > 0 ? ResourceUtils.getString(model.titleToolbar): model.titleToolbarString}"
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:fontName='@{"OpenSans-Regular.ttf"}'
+                    tools:text="test" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.Toolbar>
+
+        <FrameLayout
+            android:id="@+id/containerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar"
+            android:orientation="vertical" />
+
+    </RelativeLayout>
+</layout>
